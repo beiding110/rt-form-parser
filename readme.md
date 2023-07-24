@@ -18,10 +18,14 @@
 
 ## 使用说明
 
-| props | 说明               | 默认值 |
-| ----- | ------------------ | ------ |
-| value | 双向绑定的表单变量 | {}     |
-| html  | 带模板的html字符串 | ''     |
+### props
+
+| props      | 说明                   | 默认值 |
+| ---------- | ---------------------- | ------ |
+| value      | 双向绑定的表单变量     | {}     |
+| html       | 带模板的html字符串     | ''     |
+| size       | 表单大小               | 'mini' |
+| strSpliter | 多选数组转字符串连接符 | ','    |
 
 ```js
 <RtFormParser 
@@ -39,6 +43,36 @@ v-model="form"
         <div v-html="otherSupplementInfoContent"></div>
     </template>
 </RtFormParser>
+```
+
+### methods
+
+| methods  | 说明                                                                         |
+| -------- | ---------------------------------------------------------------------------- |
+| validate | 校验表单是否全部填写，如果有没填写的内容，屏幕会自动滚动至第一个为空的内容处 |
+
+```js
+// ...
+methods: {
+    // ...
+    // 提交表单
+    submitHandler() {
+        this.$refs.form.validate(valid => {
+            if (!valid) {
+                // 校验不通过，有为空项
+                console.log(false);
+                console.log(this.form);
+                return;
+            }
+
+            // 校验通过，执行提交
+            console.log(true);
+            console.log(this.form);
+        });
+    },
+    // ...
+},
+// ...
 ```
 
 ## 模板说明
