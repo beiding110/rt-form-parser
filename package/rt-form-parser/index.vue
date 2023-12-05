@@ -117,17 +117,17 @@ export default {
                         default: () => ({}),
                     },
                 },
-                watch: {
-                    value: {
-                        handler(val) {
-                            that.model = val;
-                        },
-                        deep: true,
-                    }
-                },
                 computed: {
                     errorKeyArr() {
                         return that.errorKeyArr;
+                    },
+                    model: {
+                        get() {
+                            return that.value;
+                        },
+                        set(val) {
+                            that.model = val;
+                        },
                     },
                 },
             });

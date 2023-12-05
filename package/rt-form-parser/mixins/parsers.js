@@ -19,7 +19,7 @@ export default {
                     }
 
                     return `<el-input 
-                        v-model="value.${key}"
+                        v-model="model.${key}"
                         size="${this.size}"
                         clearable
                     ></el-input>`;
@@ -30,7 +30,7 @@ export default {
                     }
 
                     return `<el-input 
-                        v-model="value.${key}" 
+                        v-model="model.${key}" 
                         type="textarea"
                         size="${this.size}"
                     ></el-input>`;
@@ -41,7 +41,7 @@ export default {
                     }
 
                     return `<tinymce
-                        v-model="value.${key}"
+                        v-model="model.${key}"
                     ></tinymce>`;
                 },
                 'number': (key) => {
@@ -50,7 +50,7 @@ export default {
                     }
 
                     return `<el-input-number 
-                        v-model="value.${key}" 
+                        v-model="model.${key}" 
                         :min="0"
                         controls-position="right"
                         size="${this.size}"
@@ -66,7 +66,7 @@ export default {
                     }
 
                     return `<el-checkbox-group 
-                    v-model="value.${key}"
+                    v-model="model.${key}"
                     size="${this.size}"
                     >
                         <el-checkbox 
@@ -83,7 +83,7 @@ export default {
                         this.$set(this.value, key, '');
                     }
 
-                    return `<el-radio-group v-model="value.${key}">
+                    return `<el-radio-group v-model="model.${key}">
                         <el-radio 
                         v-for="(item, index) in ${data}" 
                         :key="index" 
@@ -99,7 +99,7 @@ export default {
                     }
 
                     return `<el-select 
-                    v-model="value.${key}"
+                    v-model="model.${key}"
                     size="${this.size}"
                     clearable
                     placeholder=""
@@ -128,7 +128,7 @@ export default {
 
                     return `<el-date-picker 
                         type="${type}" 
-                        v-model="value.${key}" 
+                        v-model="model.${key}" 
                         format="${formatItem[0]}" 
                         value-format="${formatItem[1]}"
                         size="${this.size}"
